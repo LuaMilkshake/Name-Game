@@ -7,6 +7,7 @@
  **/
 
 #include <stdio.h>
+#include <ctype.h>
 
 int main(int argc, char** argv){
 	int i = 1;
