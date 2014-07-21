@@ -6,6 +6,13 @@
  * song by the same name.
  **/
 
+#include <stdio.h>
+
 int main(int argc, char** argv){
+	if(argc == 1){
+		printf("Usage : %s <name> ...\n", argv[0]);
+		return 0;
+	}
+
 	return 0;
 }
