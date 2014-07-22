@@ -17,6 +17,14 @@ int main(int argc, char** argv){
 	}
 
 	for(;i<argc;i++){
+		/* Test to see if the arg is either an empty string, or only one char */
+		if(*argv[i] == 0){
+			continue;
+		}else if(argv[i][1] == 0){
+			fprintf(stderr, "\'%c\' is too short to use as a name!\n\n", *argv[i]);
+			continue;
+		}
+
 		printf("%s!\n", argv[i]);
 
 		/*
