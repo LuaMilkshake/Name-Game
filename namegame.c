@@ -28,12 +28,6 @@ int main(int argc, char** argv){
 
 		printf("%s!\n", argv[i]);
 
-		/*
-		 * TODO: Fix issues with vowels, ie Arnold becomes "brnold". This is
-		 * errata in the original definition, which claims the replacemnt of B, F,
-		 * and M is the "only rule that is contrary".
-		 */
-
 		if(tolower(*argv[i]) == 'b')
 			printf("%s, %s bo-%s\n", argv[i], argv[i], argv[i] + 1);
 		else
