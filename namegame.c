@@ -12,8 +12,11 @@
 int main(int argc, char** argv){
 	/* Iterators */
 	int arg_i = 1;
+	int char_i;
 	/* Points to the name sans the first letter (with exceptions) */
 	char* cut_name = NULL;
+	/* Holds the first letter of the name in uppercase for the couple times we need it */
+	char fl_cap = 0;
 
 	if(argc == 1){
 		printf("Usage : %s <name> ...\n", argv[0]);
@@ -29,7 +32,26 @@ int main(int argc, char** argv){
 			continue;
 		}
 
-		printf("%s!\n", argv[arg_i]);
+		/* Note about the splitting of the first letter here:
+		 * I could have stored a different copy of the string for the two
+		 * different cases when I need all-lower or first-upper/rest-lower,
+		 * but that would have required either limiting the names to a
+		 * hardcoded length or a malloc call for a potentially large string
+		 * length. It's more memory-efficient to just split it like this and
+		 * lose a small amount of program simplicity. -JM */
+
+		/* Store an uppercase copy of the first letter for when we need it */
+		fl_cap = toupper(*argv[arg_i]);
+
+		/* Normalize capitalization to make printout look better
+		 * (we do this to the first letter too since it's printed if it's
+		 * a vowel) */
+		for(char_i = 0;*(argv[arg_i] + char_i) != 0;char_i++){
+			/* Set the character at the char offset to its own lowercase letter */
+			*(argv[arg_i] + char_i) = tolower(*(argv[arg_i] + char_i));
+		}
+
+		printf("%c%s!\n", fl_cap, argv[arg_i] + 1);
 
 		/* Remove the first letter of the name, unless it's a vowel. This is
 		 * not specified explicitly in the original definition but was added
@@ -48,9 +70,23 @@ int main(int argc, char** argv){
 		}
 
 		if(tolower(*argv[arg_i]) == 'b')
-			printf("%s, %s bo-%s\n", argv[arg_i], argv[arg_i], cut_name);
+			printf(
+				"%c%s, %c%s bo-%s\n",
+				fl_cap,
+				argv[arg_i] + 1,
+				fl_cap,
+				argv[arg_i] + 1,
+				cut_name
+			);
 		else
-			printf("%s, %s bo b%s\n", argv[arg_i], argv[arg_i], cut_name);
+			printf(
+				"%c%s, %c%s bo b%s\n",
+				fl_cap,
+				argv[arg_i] + 1,
+				fl_cap,
+				argv[arg_i] + 1,
+				cut_name
+			);
 
 		if(tolower(*argv[arg_i]) == 'f')
 			printf("Bonana fanna fo-%s\n", cut_name);
@@ -62,7 +98,7 @@ int main(int argc, char** argv){
 		else
 			printf("Fe fi mo m%s\n", cut_name);
 
-		printf("%s!\n\n", argv[arg_i]);
+		printf("%c%s!\n\n", fl_cap, argv[arg_i] + 1);
 	}
 
 	puts("The name game!\n");
