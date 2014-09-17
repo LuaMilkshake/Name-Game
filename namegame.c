@@ -1,10 +1,8 @@
-/**
- * The Name Game
+/* The Name Game
  * 2014 John "LuaMilkshake" Marion
  *
  * A C implementation of the "Name Game" as defined in the 1964 Shirley Ellis
- * song by the same name.
- **/
+ * song by the same name. */
 
 #include <stdio.h>
 #include <ctype.h>
@@ -55,8 +53,7 @@ int main(int argc, char** argv){
 
 		/* Remove the first letter of the name, unless it's a vowel. This is
 		 * not specified explicitly in the original definition but was added
-		 * so names like "Erin" don't become "brin".
-		 */
+		 * so names like "Erin" don't become "brin". */
 		switch(tolower(*argv[arg_i])){
 			case 'a':
 			case 'e':
