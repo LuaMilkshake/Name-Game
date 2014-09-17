@@ -46,9 +46,9 @@ int main(int argc, char** argv){
 		/* Normalize capitalization to make printout look better
 		 * (we do this to the first letter too since it's printed if it's
 		 * a vowel) */
-		for(char_i = 0;*(argv[arg_i] + char_i) != 0;char_i++){
+		for(char_i = 0;argv[arg_i][char_i] != 0;char_i++){
 			/* Set the character at the char offset to its own lowercase letter */
-			*(argv[arg_i] + char_i) = tolower(*(argv[arg_i] + char_i));
+			argv[arg_i][char_i] = tolower(argv[arg_i][char_i]);
 		}
 
 		printf("%c%s!\n", fl_cap, argv[arg_i] + 1);
