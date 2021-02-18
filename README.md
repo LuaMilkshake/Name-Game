@@ -1,11 +1,13 @@
-# The Name Game
+# The Name Game #
 
 A C implementation of the "Name Game" as defined in the 1964 Shirley Ellis song
 by the same name.
 
-This was an "it's 1 in the morning and I'm bored" project.
+Original Specification: <https://www.youtube.com/watch?&v=Ez8fEJ86hGI>
 
-## License
+(This was an "it's 1 in the morning and I'm bored" project.)
+
+## License ##
 
 Not that you'd fork this, but this program is licensed with the MIT license:
 
